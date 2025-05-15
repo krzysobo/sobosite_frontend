@@ -9,7 +9,7 @@ import { UserStateService } from '../user-state-service.service';
   providedIn: 'root'
 })
 export class AdminService {
-  private _api_prefix = 'http://localhost:3000/api/v1/';
+  private _api_prefix = 'http://localhost:9000/api/v1/user_forms/';
   private _api_url_admin_user_get = this._api_prefix + "admin/user/id/{id}/";
   private _api_url_admin_user_update = this._api_prefix + "admin/user/id/{id}/";
   private _api_url_admin_user_delete = this._api_prefix + "admin/user/id/{id}/";
