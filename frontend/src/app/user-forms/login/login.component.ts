@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
-import { FormGroup, FormControl,  FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router'
 import { UserStateService } from '../_utils/services/user-state-service.service'
 // import { MatCardModule } from '@angular/material/card'
@@ -18,14 +18,14 @@ import { UserStateService } from '../_utils/services/user-state-service.service'
 
 export class LoginComponent {
   private _bad_login: boolean = false;
-  
-  
+
+
   constructor(
-    private router: Router, 
-    private userStateService: UserStateService) { 
-      this._redirect_out_if_logged_in_obs();
-    }
-    
+    private router: Router,
+    private userStateService: UserStateService) {
+    this._redirect_out_if_logged_in_obs();
+  }
+
   form: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -41,10 +41,6 @@ export class LoginComponent {
     });
   }
 
-
-  _redirect_out_if_logged_in(is_logged: boolean, show_bad_login: boolean) {
-  }
-    
   submit_form() {
     console.log("Submit login form!", this.form.value);
 
@@ -55,12 +51,12 @@ export class LoginComponent {
       this._bad_login = (data == 'LOGIN_ERROR')
     });
   }
-    
+
   get bad_login() {
     return this._bad_login;
   }
 
-  reset_pass() { 
+  reset_pass() {
     console.log("reset pass click");
     this.router.navigateByUrl("/reset-password")
   }

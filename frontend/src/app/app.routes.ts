@@ -18,7 +18,7 @@ import { AdminUserEditComponent } from './user-forms/admin/admin-user-edit/admin
 
 
 export const routes: Routes = [
-    {path: '', pathMatch: 'full', redirectTo: 'home'},
+    // {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: 'home', component: MainComponent},
     {path: 'privacy-policy', component: PrivacyPolicyComponent},
     {path: 'about-us', component: AboutUsComponent},

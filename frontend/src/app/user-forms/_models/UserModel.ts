@@ -71,7 +71,7 @@ export class UserModel {
       }
     }
 
-    public static from_login_response(body: LoginResponse|null): UserModel|null {
+    public static from_login_response(body: LoginResponse|undefined|null): UserModel|null {
       if(body) {
         const res =  new UserModel(body.id, body.email, null, null, body.status ,body.first_name, body.last_name);
         res.set_is_staff(body.is_staff);

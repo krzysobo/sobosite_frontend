@@ -45,7 +45,6 @@ export class ProfileComponent {
 
   submit_form() {
     console.log("Submit profile form!", this.form.value);
-
     this.userStateService.update_profile(
       this.form.controls['email'].value, 
       this.form.controls['first_name'].value, 
