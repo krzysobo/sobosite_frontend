@@ -131,3 +131,16 @@ export class ResponseUtils {
   }
 
 }
+
+
+export class DataResponse<Type> {
+  data: Type;
+
+  constructor(data: Type) {
+    this.data = data;
+  }
+
+  get_data() {
+    return this.data;
+  }
+}

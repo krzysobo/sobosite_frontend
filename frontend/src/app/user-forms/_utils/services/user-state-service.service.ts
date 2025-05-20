@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { UserModel } from '../../_models/UserModel';
 import { FakeAuthService } from './fake-auth.service';
-import { DataResponse, RealAuthService } from './real-auth.service';
+import { DataResponse } from '../http/responses'
+import { RealAuthService } from './real-auth.service';
 import { LocalStorageService } from '../../../sobo-common/_utils/services/local-storage.service';
 
 import { UniResponse } from '../http/uniresponse'

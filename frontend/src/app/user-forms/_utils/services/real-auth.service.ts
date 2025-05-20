@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { UniResponse } from '../http/uniresponse'
+import { DataResponse } from '../http/responses'
 import { UserModel } from '../../_models/UserModel';
 import { Observable } from 'rxjs';
 import {
@@ -10,17 +11,6 @@ import {
 } from '../http/responses';
 
 
-export class DataResponse<Type> {
-  data: Type;
-
-  constructor(data: Type) {
-    this.data = data;
-  }
-
-  get_data() {
-    return this.data;
-  }
-}
 
 
 @Injectable({

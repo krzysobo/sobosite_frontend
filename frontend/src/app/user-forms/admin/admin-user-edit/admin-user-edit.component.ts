@@ -6,20 +6,12 @@ import { FormGroup, FormControl, FormsModule, ReactiveFormsModule, ValidatorFn,
 
   import { PasswordsMatchValidator } from '../../_utils/validators/PasswordsMatchValidator'
   import { UniResponse } from '../../_utils/http/uniresponse';
-  import { ResponseUtils } from '../../_utils/http/responses';
-  // import { MatCardModule } from '@angular/material/card'
-  // import { MatCheckboxModule } from '@angular/material/checkbox'
-  // import { MatInputModule } from '@angular/material/input'
-  // import { MatButtonModule } from '@angular/material/button'
-  // import { CommonModule } from '@angular/common'
-  // import { RouterLink, RouterLinkActive } from '@angular/router';
-
+  import { DataResponse, ResponseUtils } from '../../_utils/http/responses';
+  
 
 @Component({
   selector: 'app-admin-user-edit',
   standalone: false,
-  // imports: [MatCardModule, MatInputModule, MatButtonModule, MatCheckboxModule, 
-  //   FormsModule, ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './admin-user-edit.component.html',
   styleUrl: './admin-user-edit.component.scss'
 })
@@ -60,12 +52,12 @@ export class AdminUserEditComponent implements OnInit, OnDestroy {
           this.adminService.admin_user_get(this._user_id).subscribe({ 
               next: (resp: any) => {
                 console.log("AdminUserEditComponent - get - data: ", resp);
-                this.form.controls['email'].setValue(resp.body.email);
-                this.form.controls['first_name'].setValue(resp.body.first_name);
-                this.form.controls['last_name'].setValue(resp.body.last_name);
-                this.form.controls['is_active'].setValue(resp.body.is_active);
-                this.form.controls['is_staff'].setValue(resp.body.is_staff);
-                this.form.controls['failed_is_blocked'].setValue(resp.body.failed_is_blocked);
+                this.form.controls['email'].setValue(resp.body.data.email);
+                this.form.controls['first_name'].setValue(resp.body.data.first_name);
+                this.form.controls['last_name'].setValue(resp.body.data.last_name);
+                this.form.controls['is_active'].setValue(resp.body.data.is_active);
+                this.form.controls['is_staff'].setValue(resp.body.data.is_staff);
+                this.form.controls['failed_is_blocked'].setValue(resp.body.data.failed_is_blocked);
 
                 
               }, 
@@ -108,7 +100,8 @@ export class AdminUserEditComponent implements OnInit, OnDestroy {
 
     this.adminService.admin_user_update(
       user_id,
-      this.form.value
+      this.form.value,
+      this.is_password_change_open
     ).subscribe({
       next: (resp) => {
         console.log("=== AdminUserEditComponent - update - data ", resp);
