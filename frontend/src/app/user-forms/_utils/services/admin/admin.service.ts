@@ -4,13 +4,15 @@ import { Observable } from 'rxjs';
 import { AdminUserDeleteResponse, AdminUserGetResponse, AdminUserListResponse, LoginResponse, LogoutResponse, ProfileOwnChangePasswordResponse, ProfileOwnResponse, RegisterConfirmResponse, RegisterResponse, ResetPasswordConfirmResponse, ResetPasswordResponse } from '../../http/responses';
 import { UserStateService } from '../user-state-service.service';
 import { DataResponse } from '../../http/responses'
+import { environment } from '../../../../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  private _api_prefix = 'http://localhost:9000/api/v1/user_forms/';
+  // private _api_prefix = 'http://localhost:9000/api/v1/user_forms/';
+  private _api_prefix = environment.apiPrefix;  
   private _api_url_admin_user_get = this._api_prefix + "admin/user/id/{id}/";
   private _api_url_admin_user_update = this._api_prefix + "admin/user/id/{id}/";
   private _api_url_admin_user_delete = this._api_prefix + "admin/user/id/{id}/";

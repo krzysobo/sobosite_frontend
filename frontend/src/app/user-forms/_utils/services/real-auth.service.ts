@@ -9,7 +9,7 @@ import {
   ProfileOwnResponse, RegisterConfirmResponse, RegisterResponse,
   ResetPasswordConfirmResponse, ResetPasswordResponse
 } from '../http/responses';
-
+import { environment } from '../../../../environments/environment';
 
 
 
@@ -17,7 +17,9 @@ import {
   providedIn: 'root'
 })
 export class RealAuthService {
-  private _api_prefix = 'http://localhost:9000/api/v1/user_forms/';
+private apiUrl = environment.apiPrefix;
+  // private _api_prefix = 'http://localhost:9000/api/v1/user_forms/';
+  private _api_prefix = environment.apiPrefix;
   private _api_url_login = this._api_prefix + "user/login/";
   private _api_url_logout = this._api_prefix + "user/logout/";
   private _api_url_profile_own = this._api_prefix + "user/profile/own/";
