@@ -89,8 +89,10 @@ export class AdminUserListComponent implements OnInit, OnDestroy, AfterViewInit 
     this.adminService.admin_user_list_get().subscribe({ 
       next: (resp: any) => {
         // console.log("AdminUserEditComponent - list - data: ", resp);
-        if ((resp.body != null) && (resp.body.data != undefined) && (resp.body.data != null)) {
-          this._items = resp.body['data'];
+        if ((resp.body != null) && (resp.body.data != undefined) && (resp.body.data != null) &&
+          (resp.body.data['items'] != undefined) && (resp.body.data['items'] != null)        
+        ) {
+          this._items = resp.body['data']['items'];
          this.init_data_source();
         }
       }, 

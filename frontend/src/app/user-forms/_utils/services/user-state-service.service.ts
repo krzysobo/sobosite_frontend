@@ -53,8 +53,16 @@ export class UserStateService {
 
           this.router.navigateByUrl("/login");
         },
-        error: (resp) => {
-          console.log("LOG_OUT REAL - ERRORS ", resp);
+        error: (resp) => {  // we should remove token and login data from the frontend even, if logout request fails. 
+          console.log("LOG_OUT REAL - ERRORS ", resp); 
+          this.set_last_action("LOGGED_OUT");
+          this._set_current_token(null);
+          this._set_current_user(null);
+          this._set_is_logged(false);
+          this.is_logged_subb.next(false);
+
+          this.router.navigateByUrl("/login");
+
         },
         complete: () => {
 
